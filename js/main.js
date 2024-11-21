@@ -102,3 +102,30 @@
     
 })(jQuery);
 
+ // Listen for form submission
+    document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+        e.preventDefault(); // Prevent form submission to allow validation
+        
+        // Get form values
+        var department = document.getElementById('department').value;
+        var doctor = document.getElementById('doctor').value;
+        var name = document.getElementById('name').value;
+        var email = document.getElementById('email').value;
+        var date = document.getElementById('dateInput').value;
+        var time = document.getElementById('timeInput').value;
+
+        // Validate all fields
+        if (!department || !doctor || !name || !email || !date || !time) {
+            alert('Please fill in all the fields!');
+            return;
+        }
+
+        // Show success modal
+        var successModal = new bootstrap.Modal(document.getElementById('successModal'));
+        successModal.show();
+        
+        // Clear form fields after success
+        document.getElementById('appointmentForm').reset();
+    });
+
+
